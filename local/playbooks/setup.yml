@@ -1,0 +1,9 @@
+---
+- name: Setup Arch Linux
+  hosts: local
+  roles:
+    - common
+    - packages
+    - config
+    - dotfiles
+
