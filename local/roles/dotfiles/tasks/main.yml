@@ -1,21 +1,20 @@
 --- 
 - name: Check if dotfiles repo exists
   ansible.builtin.stat: 
-    path: "~/dotfiles/.git"
+    path: "~/dots/.git"
   register: dotfiles_repo_status
 
 
-- name: Install dotfiles
-  when: not dotfiles_repo_status.stat.exists 
+- name: Install or update dotfiles
   block:
     - name: Clone dotfiles 
       git:
-        repo: 'git@github.com:eblakem/dotfiles.git'
-        dest: ~/dotfiles
+        repo: 'git@github.com:eblakem/dots.git'
+        dest: ~/dots
         clone: yes 
         update: yes
 
     - name: Stow adopt 
       ansible.builtin.command: ./stow-adopt.sh 
       args:
-        chdir: ~/dotfiles
+        chdir: ~/dots
