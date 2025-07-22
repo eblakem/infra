@@ -1,10 +1,14 @@
 ---
 - name: Setup Arch Linux
   hosts: local
+  gather_facts: true
   roles:
-    - common
-    - packages
-    - config
-    - dotfiles
-    - desktop
+    - 10_common
+    - 20_packages
+    - 30_config
+    - 40_dotfiles
+    - 50_desktop
+    - 60_setup
+    - 70_software
+    - 99_cleanup
 

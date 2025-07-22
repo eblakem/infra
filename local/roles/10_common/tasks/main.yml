@@ -6,11 +6,6 @@
     upgrade: yes
   changed_when: false
 
-- name: Set timezone to Australia/Brisbane
-  become: yes
-  timezone:
-    name: Australia/Brisbane
-
 - name: Install essential packages
   become: yes
   pacman:

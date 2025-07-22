@@ -1,0 +1,33 @@
+---
+- name: Firewall enable
+  become: yes
+  command: ufw enable
+
+- name: Firewall disable incoming connections
+  become: yes
+  command: ufw default deny incoming
+
+- name: Firewall enable cups
+  become: yes
+  command: ufw allow 631/tcp
+
+- name: Check if docker group exists
+  become: yes
+  command: getent group docker
+  register: docker_group_check
+  ignore_errors: true
+
+- name: Create docker group if it doesn't exist
+  group:
+    name: docker
+    state: present
+  when: docker_group_check.rc != 0
+
+- name: Add current user to docker group
+  user:
+    name: "{{ lookup('env', 'USER') }}"
+    groups: docker
+    append: true
+  when: docker_group_check.rc != 0
+
+
