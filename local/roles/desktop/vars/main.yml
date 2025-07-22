@@ -1,0 +1,13 @@
+---
+niri_packages:
+  - niri
+  - fuzzel # application launcher
+  - mako # notifications
+  - waybar
+  - xdg-desktop-portal-gtk # screen sharing
+  - xdg-desktop-portal-gnome # screen sharing
+  - alacritty # default terminal
+  - swaybg
+  - swayidle
+  - swaylock
+  - xwayland-satellite # to run x11 apps
