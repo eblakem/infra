@@ -1,0 +1,46 @@
+---
+- name: Check if devpod exists
+  command: which devpod
+  register: devpod_check
+  ignore_errors: true
+
+- name: Download devpod if it doesn't exist
+  when: devpod_check.rc == 1
+  block:
+    - name: Download devpod
+      get_url:
+        url: https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64
+        dest: /tmp/devpod
+        mode: 0755
+
+    - name: Install devpod
+      command: /tmp/devpod
+
+    - name: Cleanup devpod
+      command: rm -r /tmp/devpod
+
+- name: Check if ghcup exists
+  command: which ghcup
+  register: ghcup_check
+  ignore_errors: true
+
+- name: Install ghcup if it doesn't exist 
+  when: ghcup_check.rc == 1
+  block:
+    - name: Download ghcup
+      get_url:
+        url: https://get-ghcup.haskell.org
+        dest: /tmp/ghcup
+        mode: 0755
+
+    - name: Install ghcup
+      command: /tmp/ghcup 
+      environment:
+        - BOOTSTRAP_HASKELL_NONINTERACTIVE: 1
+
+    - name: Cleanup ghcup
+      command: rm -r /tmp/ghcup
+
+
+
+
