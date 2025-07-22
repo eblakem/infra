@@ -6,8 +6,12 @@ niri_packages:
   - waybar
   - xdg-desktop-portal-gtk # screen sharing
   - xdg-desktop-portal-gnome # screen sharing
+  - gnome-keyring # implements the secret portal
+  - nautilus # required for gnome portal
   - alacritty # default terminal
   - swaybg
   - swayidle
   - swaylock
   - xwayland-satellite # to run x11 apps
+  - plasma-polkit-agent # authentication agent
+

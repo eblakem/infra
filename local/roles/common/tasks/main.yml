@@ -19,17 +19,5 @@
       - git 
       - openssh
     state: present
-  tags:
-    - install_packages
 
-- name: Check if .profile file exists
-  ansible.builtin.stat:
-    path: ~/.profile 
-  register: profile_file
-
-- name: Create .profile file
-  file:
-    path: ~/.profile
-    state: touch 
-  when: not profile_file.stat.exists
 

@@ -1,43 +1,20 @@
 ---
-system_packages:
-  - tmux
-  - fish
-  - kitty
-  - openssh
-
-
 aur_packages:
-  - yay # (Requires base devel)
-  # window manager
-  - uwsm
-  - libnewt
-  - hyprland
-  - hypridle
-  - hyprlock
-  - hyprsunset
-  - greetd
-  - greetd-tuigreet
-  - brightnessctl
-  - playerctl
-  - dunst 
-  - pipewire
-  - wireplumber
-  - xdg-desktop-portal-hyprland
-  - xdg-desktop-portal-gtk
-  - hyprpolkitagent
-  - qt5-wayland
-  - qt6-wayland
-  - waybar
-  - hyprpaper
-  - rofi
-  - hyprpicker
+  # terminal
+  - fish 
+  - kitty
+  # clipboard 
   - cliphist
   - wl-clipboard
+  # file browser
   - nnn
-  - slurp
-  - wl-clipboard
-  - grim
-  # web browser
+  # greeter 
+  - greetd
+  - greetd-tuigreet
+  # audio
+  - pipewire
+  - wireplumber
+  # web browsers
   - qutebrowser
   - chromium
   # editor tools
@@ -50,6 +27,8 @@ aur_packages:
   # llm
   - tgpt
   # system tools
+  - brightnessctl
+  - playerctl
   - downgrade
   - wget
   - udiskie
@@ -83,6 +62,13 @@ aur_packages:
   - nordzy-hyprcursors
   - nerd-fonts
   - noto-fonts-emoji
+  # pdf
+  - tesseract-data-eng
+  - tesseract
+  - zathura
+  - zathura-pdf-mupdf
+  # fonts
+  - ttf-hack-nerd
   # other
   - bitwarden
 
