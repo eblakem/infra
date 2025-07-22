@@ -1,5 +1,15 @@
-# my_env_vars_role/tasks/main.yml
 ---
+- name: Check if .profile file exists
+  ansible.builtin.stat:
+    path: ~/.profile 
+  register: profile_file
+
+- name: Create .profile file
+  file:
+    path: ~/.profile
+    state: touch 
+  when: not profile_file.stat.exists
+
 - name: Check if environment variables already exist
   command: grep -Fq "export {{ item }}=" ~/.profile
   register: grep_results

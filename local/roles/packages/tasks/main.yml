@@ -1,12 +1,4 @@
 --- 
-- name: Install common system packages
-  pacman:
-    name: "{{ item }}"
-    state: present
-  loop: "{{ system_packages }}"
-  tags:
-    - install_packages
-
 - name: Check if yay is installed
   ansible.builtin.stat:
     path: /usr/bin/yay 
@@ -20,7 +12,6 @@
         repo: 'https://aur.archlinux.org/yay.git'
         dest: /tmp/yay'
         clone: yes 
-        update: yes
 
     - name: Build and install yay
       ansible.builtin.command: makepkg -si --noconfirm
@@ -28,10 +19,10 @@
         chdir: '/tmp/yay'
       changed_when: true # assume makepkg will change something
 
-- name: Install AUR packages
+- name: Install base packages
   when: yay_check.stat.exists and aur_packages | length > 0
   command: yay -S --needed --noconfirm {{ item }} 
-  loop: "{{ aur_packages | reject('equalto', 'yay') | list }}" # Exclude yay
+  loop: "{{ aur_packages }}" 
   register: yay_result
   changed_when: "' there is nothing to do' not in yay_result.stdout"
   failed_when: "'error:' in yay_result.stdout"
@@ -39,10 +30,3 @@
     - install_packages
 
 
-- name: Install home system packages
-  pacman:
-    name: "{{ item }}"
-    state: present
-  loop: "{{ home_packages }}"
-  tags:
-    - home
