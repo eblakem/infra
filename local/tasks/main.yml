@@ -10,7 +10,6 @@
 
 # Install yay
 - import_tasks: tasks/yay.yml
-  become: yes
 
 # Setup aur builder user
 - import_tasks: tasks/aur-builder.yml
