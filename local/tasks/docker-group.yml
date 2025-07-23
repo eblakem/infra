@@ -1,4 +1,19 @@
 ---
+- name: Install docker
+  aur:
+    name:
+      - docker
+      - docker-compose
+      - lazydocker
+  become: yes
+  become_user: aur_builder
+
+- name: Enable the docker service
+  ansible.builtin.service:
+    name: docker
+    enabled: true
+  become: yes
+
 - name: Check if docker group exists
   become: yes
   command: getent group docker

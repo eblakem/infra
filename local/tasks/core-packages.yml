@@ -21,7 +21,6 @@
       - tmux
       - ripgrep
       - lazygit
-      - lazydocker
       - luarocks
       - tgpt
       - brightnessctl
@@ -49,8 +48,6 @@
       - xarchiver
       - inotify-tools
       - dosfstools
-      - docker
-      - docker-compose
       - mpv
       - spotify
       - nerd-fonts
