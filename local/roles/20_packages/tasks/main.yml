@@ -1,24 +1,4 @@
 --- 
-- name: Check if yay is installed
-  ansible.builtin.stat:
-    path: /usr/bin/yay 
-  register: yay_check
-
-- name: Install yay if not present
-  when: not yay_check.stat.exists 
-  block:
-    - name: Clone yay 
-      git:
-        repo: 'https://aur.archlinux.org/yay.git'
-        dest: '/tmp/yay'
-        clone: yes 
-
-    - name: Build and install yay
-      ansible.builtin.command: makepkg -si --noconfirm
-      args:
-        chdir: '/tmp/yay'
-      changed_when: true # assume makepkg will change something
-
 - name: Install base packages
   become: yes
   pacman:
