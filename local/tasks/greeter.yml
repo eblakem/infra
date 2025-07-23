@@ -8,16 +8,17 @@
   become: yes
   become_user: aur_builder
 
-- name: Start the greetd service
-  ansible.builtin.service:
-    name: greetd
-    state: started 
-  become: yes
-
 - name: Update /etc/greetd/config.toml 
   ansible.builtin.replace:
     path: /etc/greetd/config.toml 
     regexp: '^.*command = .*$'
     replace: 'command = "tuigreet --cmd niri-session"'
   become: yes
+
+- name: Start the greetd service
+  ansible.builtin.service:
+    name: greetd
+    state: started 
+  become: yes
+
 
