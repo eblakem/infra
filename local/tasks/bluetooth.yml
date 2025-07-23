@@ -12,7 +12,6 @@
 - name: Enable the bluetooth service
   ansible.builtin.service:
     name: bluetooth
-    state: started 
     enabled: true
   become: yes
 
