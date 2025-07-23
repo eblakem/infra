@@ -13,15 +13,13 @@
 
 - name: Install or update dotfiles
   when: not dotfiles_repo_status.stat.exists
-  block:
-    - name: Clone dotfiles 
-      git:
-        repo: 'https://github.com/eblakem/dotfiles.git'
-        dest: ~/dotfiles
-        clone: yes 
-        update: yes
+  git:
+    repo: 'https://github.com/eblakem/dotfiles.git'
+    dest: ~/dotfiles
+    clone: yes 
+    update: yes
 
-    - name: Stow adopt 
-      ansible.builtin.command: ./stow-adopt.sh 
-      args:
-        chdir: ~/dotfiles
+- name: Stow adopt 
+  ansible.builtin.command: ./stow-adopt.sh 
+  args:
+    chdir: ~/dotfiles
