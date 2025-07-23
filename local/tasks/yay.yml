@@ -14,10 +14,15 @@
   when: not yay_check.stat.exists
 
 - name: Installing Yay
-  makepkg:
-    name: /tmp/yay
+  aur:
+    name: yay
+    use: makepkg
     state: present
+  args:
+    chdir: /tmp
   when: not yay_check.stat.exists
+  become: yes
+  become_user: aur_builder
 
 - name: Cleanup
   ansible.builtin.file:
