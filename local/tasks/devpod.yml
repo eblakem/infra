@@ -3,6 +3,7 @@
   command: which devpod
   register: devpod_check
   ignore_errors: true
+  failed_when: false
 
 - name: Download devpod if it doesn't exist
   when: devpod_check.rc == 1
