@@ -31,6 +31,8 @@
 
 # Install work packages
 - import_tasks: tasks/work-packages.yml
+  tags:
+    - work
 
 # Setup docker group
 - import_tasks: tasks/docker-group.yml
