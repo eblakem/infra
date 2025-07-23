@@ -28,6 +28,12 @@
   become: yes
   become_user: aur_builder
 
+# Install greeter
+- import_tasks: tasks/greeter.yml
+
+# Install bluetooth
+- import_tasks: tasks/bluetooth.yml
+
 # Install work packages
 - import_tasks: tasks/work-packages.yml
   become: yes
