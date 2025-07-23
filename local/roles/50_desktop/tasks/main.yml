@@ -1,10 +1,8 @@
 --- 
 - name: Install Niri
-  command: yay -S --needed --noconfirm {{ item }} 
-  loop: "{{ niri_packages | list }}" 
-  register: yay_result
-  changed_when: "' there is nothing to do' not in yay_result.stdout"
-  failed_when: "'error:' in yay_result.stdout"
-  tags:
-    - niri
+  become: yes
+  pacman:
+    executable: yay
+    state: present
+    name: "{{ niri_packages }}"
 

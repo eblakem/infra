@@ -13,5 +13,5 @@ niri_packages:
   - swayidle
   - swaylock
   - xwayland-satellite # to run x11 apps
-  - plasma-polkit-agent # authentication agent
+  - polkit-kde-agent # authentication agent
 

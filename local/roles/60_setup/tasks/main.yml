@@ -18,12 +18,14 @@
   ignore_errors: true
 
 - name: Create docker group if it doesn't exist
+  become: yes
   group:
     name: docker
     state: present
   when: docker_group_check.rc != 0
 
 - name: Add current user to docker group
+  become: yes
   user:
     name: "{{ lookup('env', 'USER') }}"
     groups: docker
