@@ -1,0 +1,12 @@
+---
+- name: Firewall enable
+  command: ufw enable
+
+- name: Firewall disable incoming connections
+  command: ufw default deny incoming
+
+- name: Firewall enable cups
+  command: ufw allow 631/tcp
+
+
+

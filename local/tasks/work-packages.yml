@@ -1,0 +1,8 @@
+---
+- name: Install work packages  
+  aur:
+    name: 
+      - evdi
+      - displaylink
+      - icaclient
+    state: present

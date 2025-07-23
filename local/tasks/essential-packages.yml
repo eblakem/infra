@@ -1,11 +1,4 @@
 ---
-- name: Update the system
-  become: yes
-  pacman:
-    update_cache: yes
-    upgrade: yes
-  changed_when: false
-
 - name: Install essential packages
   become: yes
   pacman:
@@ -13,7 +6,4 @@
       - base-devel
       - git 
       - openssh
-      - go
     state: present
-
-

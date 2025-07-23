@@ -14,7 +14,8 @@
   command: grep -Fq "export {{ item }}=" ~/.profile
   register: grep_results
   ignore_errors: true
-  loop: "{{ env_vars }}"
+  loop:
+    - GEMAPI
 
 - name: Set fact for existing environment variables
   set_fact:

@@ -1,0 +1,20 @@
+---
+- name: Install user-interface packages  
+  aur:
+    name: 
+      - niri
+      - fuzzel
+      - mako
+      - waybar
+      - xdg-desktop-portal-gtk
+      - xdg-desktop-portal-gnome
+      - gnome-keyring
+      - nautilus
+      - fish
+      - kitty
+      - swaybg
+      - swayidle
+      - swaylock
+      - xwayland-satellite
+      - polkit-kde-agent
+    state: present
