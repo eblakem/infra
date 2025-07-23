@@ -13,8 +13,7 @@
       - base-devel
       - git 
       - openssh
-      - yay
-      - ansible-core
+      - go
     state: present
 
 
