@@ -10,13 +10,13 @@
     - name: Clone yay 
       git:
         repo: 'https://aur.archlinux.org/yay.git'
-        dest: /tmp/yay
+        dest: '/tmp/yay'
         clone: yes 
 
     - name: Build and install yay
       ansible.builtin.command: makepkg -si --noconfirm
       args:
-        chdir: /tmp/yay
+        chdir: '/tmp/yay'
       changed_when: true # assume makepkg will change something
 
 - name: Install base packages
