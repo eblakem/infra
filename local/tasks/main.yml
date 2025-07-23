@@ -5,14 +5,14 @@
 # Install essential packages
 - import_tasks: tasks/essential-packages.yml
 
+# Setup aur builder user
+- import_tasks: tasks/aur-builder.yml
+
 # Create profile
 - import_tasks: tasks/profile.yml
 
 # Install yay
 - import_tasks: tasks/yay.yml
-
-# Setup aur builder user
-- import_tasks: tasks/aur-builder.yml
 
 # Clone dotfiles
 - import_tasks: tasks/dotfiles.yml
