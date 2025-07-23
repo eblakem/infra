@@ -5,7 +5,7 @@
   register: yay_check
 
 - name: Install yay if not present
-  when: not yay_check.stat.exists and 'yay' in aur_packages
+  when: not yay_check.stat.exists 
   block:
     - name: Clone yay 
       git:
