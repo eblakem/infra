@@ -4,6 +4,7 @@
     path: /usr/bin/yay 
   register: yay_check
 
+
 - name: Cloning Yay
   ansible.builtin.git:
     repo: https://aur.archlinux.org/yay-bin.git
@@ -17,6 +18,8 @@
   args:
     chdir: /tmp/yay
   when: not yay_check.stat.exists
+  become: yes
+  become_user: aur_builder
 
 - name: Cleanup
   ansible.builtin.file:
