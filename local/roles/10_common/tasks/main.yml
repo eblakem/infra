@@ -13,6 +13,8 @@
       - base-devel
       - git 
       - openssh
+      - yay
+      - ansible-core
     state: present
 
 
