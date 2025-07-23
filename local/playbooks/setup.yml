@@ -1,7 +1,6 @@
 ---
 - name: Setup Arch Linux
   hosts: local
-  gather_facts: true
   roles:
     - 10_common
     - 20_packages
@@ -10,5 +9,4 @@
     - 50_desktop
     - 60_setup
     - 70_software
-    - 99_cleanup
 
