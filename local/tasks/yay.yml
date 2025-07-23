@@ -17,7 +17,6 @@
   args:
     chdir: /tmp/yay
   when: not yay_check.stat.exists
-  become: yes
 
 - name: Cleanup
   ansible.builtin.file:
