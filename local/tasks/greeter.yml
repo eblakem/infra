@@ -11,7 +11,7 @@
 - name: Start the greetd service
   ansible.builtin.service:
     name: greetd
-    state: started
+    state: enabled 
   become: yes
 
 - name: Update /etc/greetd/config.toml 
