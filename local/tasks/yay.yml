@@ -15,11 +15,9 @@
 
 - name: Installing Yay
   aur:
-    name: yay
     use: makepkg
-    state: present
-  args:
-    chdir: /tmp
+    name: yay
+    local_pkgbuild: /tmp/yay
   when: not yay_check.stat.exists
   become: yes
   become_user: aur_builder
