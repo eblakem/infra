@@ -1,8 +1,8 @@
 --- 
-- name: Install Niri
-  pacman:
-    executable: yay
-    state: present
-    name: "{{ niri_packages }}"
-    extra_args: --builddir /var/cache/yay
+- name: Install packages using yay
+  command: "yay --noconfirm --needed {{ item }}"
+  loop: "{{ niri_packages | list }}"
+  register: yay_result
+  changed_when: "' there is nothing to do' not in yay_result.stdout"
+  failed_when: "'error:' in yay_result.stdout"
 
