@@ -46,7 +46,6 @@ aur_packages:
   - docker
   - docker-compose
   - mpv
-  - spotify
   - nerd-fonts
   - noto-fonts-emoji
   - tesseract-data-eng
