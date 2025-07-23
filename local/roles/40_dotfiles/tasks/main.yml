@@ -10,7 +10,7 @@
   block:
     - name: Clone dotfiles 
       git:
-        repo: 'git@github.com:eblakem/dotfiles.git'
+        repo: 'https://github.com/eblakem/dotfiles.git'
         dest: ~/dotfiles
         clone: yes 
         update: yes
