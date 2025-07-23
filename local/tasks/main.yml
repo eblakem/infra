@@ -20,7 +20,7 @@
 # Install core packages
 - import_tasks: tasks/core-packages.yml
 
-# Install Niri
+# Install window manager 
 - import_tasks: tasks/user-interface-packages.yml
 
 # Install greeter

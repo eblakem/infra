@@ -1,9 +1,15 @@
 --- 
+- name: Ensure dotfile dependencies
+  pacman:
+    name: 
+      - git
+      - stow
+    state: present
+
 - name: Check if dotfiles repo exists
   ansible.builtin.stat: 
     path: "~/dotfiles/.git"
   register: dotfiles_repo_status
-
 
 - name: Install or update dotfiles
   when: not dotfiles_repo_status.stat.exists
