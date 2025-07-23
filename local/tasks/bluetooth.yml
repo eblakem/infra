@@ -9,10 +9,11 @@
   become: yes
   become_user: aur_builder
 
-- name: Start the bluetooth service
+- name: Enable the bluetooth service
   ansible.builtin.service:
     name: bluetooth
-    state: started
+    state: started 
+    enabled: true
   become: yes
 
 

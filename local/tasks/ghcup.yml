@@ -3,6 +3,7 @@
   command: which ghcup
   register: ghcup_check
   ignore_errors: true
+  failed_when: false
 
 - name: Install ghcup if it doesn't exist 
   when: ghcup_check.rc == 1

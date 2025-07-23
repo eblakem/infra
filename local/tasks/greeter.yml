@@ -15,10 +15,11 @@
     replace: 'command = "tuigreet --cmd niri-session"'
   become: yes
 
-- name: Start the greetd service
+- name: Enable the greetd service
   ansible.builtin.service:
     name: greetd
     state: started 
+    enabled: true
   become: yes
 
 
