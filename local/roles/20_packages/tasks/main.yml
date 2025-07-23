@@ -14,7 +14,6 @@
         clone: yes 
 
     - name: Build and install yay
-      become: yes
       ansible.builtin.command: makepkg -si --noconfirm
       args:
         chdir: '/tmp/yay'
