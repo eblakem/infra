@@ -1,5 +1,7 @@
 ---
 - name: Install work packages  
+  become: yes
+  become_user: aur_builder
   aur:
     name: 
       - evdi

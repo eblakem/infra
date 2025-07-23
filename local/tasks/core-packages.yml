@@ -1,5 +1,7 @@
 ---
 - name: Install core packages  
+  become: yes
+  become_user: aur_builder
   aur:
     name: 
       - base-devel 

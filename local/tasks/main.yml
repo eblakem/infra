@@ -1,32 +1,27 @@
 ---
+# Update/Upgrade system
 - import_tasks: tasks/upgrade.yml
-  become: yes
 
+# Install essential packages
 - import_tasks: tasks/essential-packages.yml
-  become: yes
 
+# Create profile
 - import_tasks: tasks/profile.yml
 
 # Install yay
 - import_tasks: tasks/yay.yml
-  become: yes
 
 # Setup aur builder user
 - import_tasks: tasks/aur-builder.yml
-  become: yes
 
 # Clone dotfiles
 - import_tasks: tasks/dotfiles.yml
 
 # Install core packages
 - import_tasks: tasks/core-packages.yml
-  become: yes
-  become_user: aur_builder
 
 # Install Niri
 - import_tasks: tasks/user-interface-packages.yml
-  become: yes
-  become_user: aur_builder
 
 # Install greeter
 - import_tasks: tasks/greeter.yml
@@ -36,12 +31,9 @@
 
 # Install work packages
 - import_tasks: tasks/work-packages.yml
-  become: yes
-  become_user: aur_builder
 
 # Setup docker group
 - import_tasks: tasks/docker-group.yml
-  become: yes
 
 # Setup devpod
 - import_tasks: tasks/devpod.yml
@@ -51,6 +43,5 @@
 
 # Setup firewall
 - import_tasks: tasks/firewall.yml
-  become: yes
 
 

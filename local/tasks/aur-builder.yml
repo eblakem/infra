@@ -4,6 +4,7 @@
     name: aur_builder
     create_home: yes
     group: wheel
+  become: yes
 
 - name: Allow the `aur_builder` user to run `sudo pacman` without a password
   ansible.builtin.lineinfile:
@@ -12,4 +13,5 @@
     create: yes
     mode: 0644
     validate: 'visudo -cf %s'
+  become: yes
 
