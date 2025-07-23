@@ -24,6 +24,5 @@
   pacman:
     name: "{{ aur_packages }}"
     state: present
-    executable: yay
 
 
