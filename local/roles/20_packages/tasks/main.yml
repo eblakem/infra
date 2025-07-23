@@ -24,5 +24,8 @@
   pacman:
     name: "{{ aur_packages }}"
     state: present
+    executable: yay
+    extra_args: --builddir /var/cache/yay
+
 
 
