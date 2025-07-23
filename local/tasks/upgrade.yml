@@ -3,3 +3,4 @@
   pacman:
     update_cache: true
     upgrade: true
+  become: yes

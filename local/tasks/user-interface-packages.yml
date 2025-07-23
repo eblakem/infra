@@ -1,5 +1,7 @@
 ---
 - name: Install user-interface packages  
+  become: yes
+  become_user: aur_builder
   aur:
     name: 
       - niri
