@@ -1,0 +1,19 @@
+---
+- name: Install bluetooth 
+  aur:
+    name:
+      - bluez
+      - bluez-utils
+      - bluetui
+    state: present
+  become: yes
+  become_user: aur_builder
+
+- name: Start the bluetooth service
+  ansible.builtin.service:
+    name: bluetooth
+    state: started
+  become: yes
+
+
+
