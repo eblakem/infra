@@ -1,4 +1,0 @@
---- 
-- name: Install packages using yay
-  command: "yay --noconfirm --needed < {{ niri_packages }}"
-

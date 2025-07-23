@@ -1,0 +1,20 @@
+---
+- name: Check if devpod exists
+  command: which devpod
+  register: devpod_check
+  ignore_errors: true
+
+- name: Download devpod if it doesn't exist
+  when: devpod_check.rc == 1
+  block:
+    - name: Download devpod
+      get_url:
+        url: https://github.com/loft-sh/devpod/releases/latest/download/devpod-linux-amd64
+        dest: /tmp/devpod
+        mode: 0755
+
+    - name: Install devpod
+      command: /tmp/devpod
+
+    - name: Cleanup devpod
+      command: rm -r /tmp/devpod

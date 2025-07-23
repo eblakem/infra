@@ -1,16 +1,4 @@
 ---
-- name: Firewall enable
-  become: yes
-  command: ufw enable
-
-- name: Firewall disable incoming connections
-  become: yes
-  command: ufw default deny incoming
-
-- name: Firewall enable cups
-  become: yes
-  command: ufw allow 631/tcp
-
 - name: Check if docker group exists
   become: yes
   command: getent group docker
@@ -31,5 +19,4 @@
     groups: docker
     append: true
   when: docker_group_check.rc != 0
-
 
