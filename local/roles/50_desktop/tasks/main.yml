@@ -1,8 +1,8 @@
 --- 
 - name: Install Niri
-  become: yes
   pacman:
     executable: yay
     state: present
     name: "{{ niri_packages }}"
+    extra_args: --builddir /var/cache/yay
 
