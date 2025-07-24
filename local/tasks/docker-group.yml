@@ -27,10 +27,14 @@
     state: present
   when: docker_group_check.rc != 0
 
+- name: Lookup USER
+  command: "echo {{ lookup('env', 'USER') }}"
+  register: lookup_user
+
 - name: Add current user to docker group
   become: yes
   user:
-    name: "{{ lookup('env', 'USER') }}"
+    name: "{{ lookup_user.stdout }}"
     groups: docker
     append: true
   when: docker_group_check.rc != 0
