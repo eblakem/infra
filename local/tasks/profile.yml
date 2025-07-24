@@ -10,11 +10,4 @@
     state: touch 
   when: not profile_file.stat.exists
 
-- name: Add environment variables to .profile
-  ansible.builtin.lineinfile:
-    path: ~/.profile
-    regexp: "^export {{ item }}=*"
-    line: "export {{ item }}=todo"
-  loop:
-    - GEMAPI
 
