@@ -1,10 +1,11 @@
 ---
 - name: Check if environment variable exists
-  command: grep -q "export {{ item }}" ~/.profile
+  command: grep "export {{ item }}" ~/.profile
   register: grep_result
   ignore_errors: yes
 
 - name: Add environment variables to .profile
+  when: grep_result.rc == 1
   ansible.builtin.lineinfile:
     path: ~/.profile
     line: "export {{ item }}=todo"
