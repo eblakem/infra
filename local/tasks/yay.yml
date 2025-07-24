@@ -14,9 +14,10 @@
   when: not yay_check.stat.exists
 
 - name: Installing Yay
-  shell: makepkg -si --noconfirm
-  args:
-    chdir: /tmp/yay
+  aur:
+    use: makepkg
+    name: yay
+    local_pkgbuild: /tmp/yay
   when: not yay_check.stat.exists
   become: yes
   become_user: aur_builder
