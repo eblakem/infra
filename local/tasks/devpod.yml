@@ -15,7 +15,8 @@
         mode: 0755
 
     - name: Install devpod
-      command: /tmp/devpod
+      command: install -c -m 0755 /tmp/devpod /usr/local/bin
+      become: yes
 
     - name: Cleanup devpod
       command: rm -r /tmp/devpod

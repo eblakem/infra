@@ -1,40 +1,20 @@
 ---
 - name: Check if .profile file exists
-  stat:
-    path: ~/.profile 
+  ansible.builtin.stat:
+    path: ~/.bash_profilele 
   register: profile_file
 
 - name: Create .profile file
-  file:
+  ansible.builtin.file:
     path: ~/.profile
     state: touch 
   when: not profile_file.stat.exists
 
-- name: Check if environment variables already exist
-  command: grep -Fq "export {{ item }}=" ~/.profile
-  register: grep_results
-  ignore_errors: true
+- name: Add environment variables to .profile
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    regexp: '^export {{ item }}=*'
+    line: "export {{ item }}=todo"
   loop:
     - GEMAPI
-
-- name: Set fact for existing environment variables
-  set_fact:
-    existing_vars: "{{ existing_vars | default([]) + [item.item] }}"
-  when: item.rc == 1  # If grep did not find the variable
-  loop: "{{ grep_results.results }}"
-
-- name: Prompt for environment variable values if not already present
-  pause:
-    prompt: "Please enter the value for {{ item }}:"
-  register: user_input 
-  when: existing_vars is defined
-  loop: "{{ existing_vars }}"
-
-- name: Write environment variables to .profile if not already present
-  lineinfile:
-    path: ~/.profile
-    line: "export {{ item.item }}={{ item.user_input }}"
-    state: present
-  when: user_input is defined and user_input.results is defined 
-  loop: "{{ user_input.results }}"
 

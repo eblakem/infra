@@ -15,6 +15,9 @@
       - nnn
       - pipewire
       - wireplumber
+      - pipewire-audio
+      - pipewire-alsa
+      - pipewire-pulse
       - qutebrowser
       - chromium
       - neovim

@@ -4,7 +4,28 @@
   become_user: aur_builder
   aur:
     name: 
+      - dkms
+      - linux-headers
       - evdi
       - displaylink
       - icaclient
     state: present
+
+- name: Create 20-evdi.conf file
+  ansible.builtin.copy:
+    dest: /etc/X11/xorg.conf.d/20-evdi.conf 
+    content: | 
+      Section "OutputClass"
+              Identifier "DisplayLink"
+              MatchDriver "evdi"
+              Driver "modesetting"
+              Option "AccelMethod" "none
+      EndSection
+
+- name: Enable the display-link service
+  ansible.builtin.service:
+    name: displaylink
+    enabled: true
+  become: yes
+
+

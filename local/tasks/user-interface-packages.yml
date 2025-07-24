@@ -8,6 +8,7 @@
       - fuzzel
       - mako
       - waybar
+      - nwg-bar
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-gnome
       - gnome-keyring
