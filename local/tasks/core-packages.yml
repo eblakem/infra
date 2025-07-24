@@ -60,4 +60,5 @@
       - zathura
       - zathura-pdf-mupdf
       - bitwarden
+      - sxiv
     state: present

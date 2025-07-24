@@ -9,6 +9,7 @@
       - mako
       - waybar
       - nwg-bar
+      - nwg-look
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-gnome
       - gnome-keyring
@@ -20,4 +21,5 @@
       - swaylock
       - xwayland-satellite
       - polkit-kde-agent
+      - adapta-gtk-theme
     state: present
