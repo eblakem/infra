@@ -1,0 +1,20 @@
+--- 
+- name: Check if the Zathura desktop file exists
+  ansible.builtin.stat:
+    path: /usr/share/applications/org.pwmt.zathura.desktop
+  register: zathura_check
+  ignore_errors: yes
+
+- name: Set Zathura as default pdf viewer
+  when: zathura_check.stat.exists
+  command: xdg-mime default org.pwmt.zathura.desktop application/pdf
+
+- name: Check if the sxiv desktop file exists
+  ansible.builtin.stat:
+    path: /usr/share/applications/sxiv.desktop
+  register: sxiv_check
+  ignore_errors: yes
+
+- name: Set sxiv as default image viewer
+  when: sxiv_check.stat.exists
+  command: xdg-mime default sxiv.desktop image/bmp image/gif image/jpeg image/jpg image/png image/tiff image/x-bmp image/x-portable-anymap image/x-portable-bitmap image/x-portable-graymap image/x-tga image/x-xpixmap
