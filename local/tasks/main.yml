@@ -11,6 +11,11 @@
 # Create profile
 - import_tasks: tasks/profile.yml
 
+# Update profile
+- include_tasks: tasks/update-profile.yml
+  loop:
+    - GEMAPI
+
 # Install yay
 - import_tasks: tasks/yay.yml
 
