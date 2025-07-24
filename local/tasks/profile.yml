@@ -1,7 +1,7 @@
 ---
 - name: Check if .profile file exists
   ansible.builtin.stat:
-    path: ~/.bash_profilele 
+    path: ~/.profile 
   register: profile_file
 
 - name: Create .profile file
