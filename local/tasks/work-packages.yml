@@ -21,6 +21,7 @@
               Driver "modesetting"
               Option "AccelMethod" "none
       EndSection
+  become: yes
 
 - name: Enable the display-link service
   ansible.builtin.service:
