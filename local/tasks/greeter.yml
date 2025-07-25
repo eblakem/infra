@@ -12,7 +12,7 @@
   ansible.builtin.replace:
     path: /etc/greetd/config.toml 
     regexp: '^.*command = .*$'
-    replace: 'command = "tuigreet --cmd niri-session"'
+    replace: 'command = "tuigreet --cmd niri"'
   become: yes
 
 - name: Enable the greetd service
