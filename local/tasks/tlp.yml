@@ -1,0 +1,17 @@
+---
+- name: Install TLP 
+  aur:
+    name:
+      - tlp
+    state: present
+  become: yes
+  become_user: aur_builder
+
+- name: Enable the tlp service
+  ansible.builtin.service:
+    name: tlp 
+    enabled: true
+  become: yes
+
+
+
