@@ -20,6 +20,8 @@
     - GIT_AUTHOR_EMAIL
     - GIT_COMMITTER_NAME
     - GIT_COMMITTER_EMAIL
+    - MY_LATITUDE
+    - MY_LONGITUDE
 
 # Install yay
 - import_tasks: tasks/yay.yml
