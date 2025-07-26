@@ -27,3 +27,11 @@
 
 - name: Update stack config to use system ghc
   command: stack config set system-ghc true --global
+
+
+- name: Add .local/bin to path in .profile
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: 'export PATH="home/$USER/.local/bin/:$PATH"'
+    state: "present"
+

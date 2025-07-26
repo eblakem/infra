@@ -52,6 +52,8 @@
 
 # Setup ghcup
 - import_tasks: tasks/ghcup.yml
+  tags:
+    - home
 
 # Setup firewall
 - import_tasks: tasks/firewall.yml
