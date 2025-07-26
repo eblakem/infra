@@ -22,4 +22,8 @@
     - name: Cleanup ghcup
       command: rm -r /tmp/ghcup
 
+- name: Update stack config to install-ghc false
+  command: stack config set install-ghc false --global
 
+- name: Update stack config to use system ghc
+  command: stack config set system-ghc true --global
