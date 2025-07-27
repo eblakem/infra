@@ -8,10 +8,11 @@
   when: fnm_check.rc == 1
   block:
     - name: Run the fnm install script
-      command: ../scripts/fnm-install.sh
+      command: ~/infra/local/scripts/fnm-install.sh
 
     - name: Source fnm
-      command: source ~/.config/fish/conf.d/fnm.fish
+      shell: source ~/.config/fish/conf.d/fnm.fish
+      executable: /bin/fish
 
     - name: Install latest node
       command: fnm install --latest
