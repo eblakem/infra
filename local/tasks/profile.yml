@@ -10,4 +10,10 @@
     state: touch 
   when: not profile_file.stat.exists
 
+- name: Add static environment variables to .profile
+  ansible.builtin.lineinfile:
+    path: ~/.profile
+    line: "export PROFILE=~/.profile"
+    state: "present"
+
 

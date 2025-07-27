@@ -57,6 +57,9 @@
   tags:
     - home
 
+# Setup fnm
+- import_tasks: tasks/fnm.yml
+
 # Setup firewall
 - import_tasks: tasks/firewall.yml
 
