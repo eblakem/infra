@@ -12,7 +12,6 @@
 
     - name: Source fnm
       shell: source ~/.config/fish/conf.d/fnm.fish
-      executable: /bin/fish
 
     - name: Install latest node
       command: fnm install --latest
