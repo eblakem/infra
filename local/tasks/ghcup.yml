@@ -32,6 +32,6 @@
 - name: Add .local/bin to path in .profile
   ansible.builtin.lineinfile:
     path: ~/.profile
-    line: 'export PATH="home/$USER/.local/bin/:$PATH"'
+    line: 'export PATH="/home/$USER/.local/bin/:$PATH"'
     state: "present"
 
