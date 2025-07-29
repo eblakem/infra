@@ -61,4 +61,6 @@
       - zathura-pdf-mupdf
       - bitwarden
       - sxiv
+      - fastfetch
+      - cmatrix
     state: present
