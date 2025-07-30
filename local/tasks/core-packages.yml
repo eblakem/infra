@@ -61,4 +61,5 @@
       - zathura-pdf-mupdf
       - bitwarden
       - sxiv
+      - swappy
     state: present
