@@ -62,4 +62,6 @@
       - bitwarden
       - sxiv
       - swappy
+      - fastfetch
+      - cmatrix
     state: present
