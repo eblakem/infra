@@ -6,7 +6,7 @@
     name: 
       - dkms
       - linux-headers
-      - evdi
+      - evdi-dkms
       - displaylink
       - icaclient
       - dotnet-sdk-8.0
