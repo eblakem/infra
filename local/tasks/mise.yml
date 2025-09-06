@@ -1,0 +1,22 @@
+--- 
+- name: Check if mise exists
+  command: which mise
+  register: mise_check
+  ignore_errors: true
+
+- name: Install mise
+  when: mise_check.rc == 1
+  block:
+    - name: Install mise 
+      become: yes
+      become_user: aur_builder
+      aur:
+        name:
+          - mise
+
+    - name: Source mise 
+      shell: echo '/usr/bin/mise activate fish | source' >> ~/.config/fish/config.fishsource 
+
+    - name: Install mise auto-completion 
+      command: mise completion fish > ~/.config/fish/completions/mise.fish
+  
