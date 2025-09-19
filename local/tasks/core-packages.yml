@@ -63,5 +63,6 @@
       - sxiv
       - swappy
       - fastfetch
+      - imagemagick
       - cmatrix
     state: present
