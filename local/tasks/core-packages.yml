@@ -45,6 +45,7 @@
       - acpid
       - perl-file-mimeinfo
       - bluetui
+      - impala
       - xf86-input-synaptics
       - unzip
       - pavucontrol
