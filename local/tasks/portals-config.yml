@@ -1,0 +1,14 @@
+---
+- name: Ensure xdg-desktop-portal directory exists
+  ansible.builtin.file:
+    path: ~/.config/xdg-desktop-portal
+    state: directory
+
+- name: Create Niri portal configuration
+  ansible.builtin.copy:
+    dest: ~/.config/xdg-desktop-portal/niri-portals.conf
+    content: |
+      [preferred]
+      default=gtk
+      org.freedesktop.impl.portal.FileChooser=gtk
+      org.freedesktop.impl.portal.AppChooser=gtk

@@ -11,5 +11,13 @@
   become: yes
   command: ufw allow 631/tcp
 
+- name: Firewall allow Forgejo UI and Registry
+  become: yes
+  command: ufw allow 3000/tcp
+
+- name: Firewall allow Forgejo SSH
+  become: yes
+  command: ufw allow 2222/tcp
+
 
 

@@ -9,7 +9,7 @@
       - evdi-dkms
       - displaylink
       - icaclient
-      - dotnet-sdk-8.0
+      - dotnet-sdk-10.0
     state: present
 
 - name: Create 20-evdi.conf file
