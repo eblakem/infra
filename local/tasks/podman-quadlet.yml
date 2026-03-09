@@ -1,0 +1,11 @@
+---
+- name: Ensure Podman Quadlet directory exists
+  ansible.builtin.file:
+    path: ~/.config/containers/systemd
+    state: directory
+
+- name: Reload systemd user daemon
+  ansible.builtin.systemd:
+    daemon_reload: yes
+    scope: user
+

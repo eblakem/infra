@@ -40,19 +40,12 @@
   tags:
     - work
 
-# Setup podman
-- import_tasks: tasks/podman.yml
-
 # Setup MSSQL Quadlet
-- import_tasks: tasks/podman-mssql.yml
+- import_tasks: tasks/podman-quadlet.yml
 
-# Setup Forgejo Quadlet
-- import_tasks: tasks/forgejo.yml
 
 # Setup ghcup
 - import_tasks: tasks/ghcup.yml
-  tags:
-    - home
 
 # Setup mise 
 - import_tasks: tasks/mise.yml
