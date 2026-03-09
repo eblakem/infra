@@ -20,7 +20,9 @@
         - BOOTSTRAP_HASKELL_NONINTERACTIVE: 1
 
     - name: Cleanup ghcup
-      command: rm -r /tmp/ghcup
+      ansible.builtin.file:
+        path: /tmp/ghcup
+        state: absent
 
 - name: Update stack config to install-ghc false
   command: stack config set install-ghc false --global

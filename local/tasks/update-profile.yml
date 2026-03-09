@@ -1,13 +1,19 @@
 ---
-- name: Check if environment variable exists
-  command: grep "export {{ item }}" ~/.profile
-  register: grep_result
-  ignore_errors: yes
-
 - name: Add environment variables to .profile
-  when: grep_result.rc == 1
   ansible.builtin.lineinfile:
     path: ~/.profile
-    line: "export {{ item }}=todo"
+    line: "export {{ item.name }}={{ item.value }}"
+    regexp: "^export {{ item.name }}="
     state: "present"
-
+  loop:
+    - { name: 'GEMAPI', value: 'todo' }
+    - { name: 'GIT_EDITOR', value: 'nvim' }
+    - { name: 'EDITOR', value: 'nvim' }
+    - { name: 'VISUAL', value: 'nvim' }
+    - { name: 'BROWSER', value: 'chromium' }
+    - { name: 'GIT_AUTHOR_NAME', value: 'todo' }
+    - { name: 'GIT_AUTHOR_EMAIL', value: 'todo' }
+    - { name: 'GIT_COMMITTER_NAME', value: 'todo' }
+    - { name: 'GIT_COMMITTER_EMAIL', value: 'todo' }
+    - { name: 'MY_LATITUDE', value: 'todo' }
+    - { name: 'MY_LONGITUDE', value: 'todo' }

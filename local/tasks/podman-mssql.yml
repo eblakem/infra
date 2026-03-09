@@ -1,0 +1,37 @@
+---
+- name: Ensure Podman Quadlet directory exists
+  ansible.builtin.file:
+    path: ~/.config/containers/systemd
+    state: directory
+
+- name: Create MSSQL Quadlet container file
+  ansible.builtin.copy:
+    dest: ~/.config/containers/systemd/mssql.container
+    content: |
+      [Unit]
+      Description=Microsoft SQL Server Container
+
+      [Container]
+      Image=mcr.microsoft.com/mssql/server:2022-latest
+      Environment=ACCEPT_EULA=Y
+      Environment=MSSQL_SA_PASSWORD=YourStrong!Passw0rd
+      PublishPort=1433:1433
+      Volume=mssql_data:/var/opt/mssql
+
+      [Service]
+      Restart=always
+
+      [Install]
+      WantedBy=default.target
+
+- name: Reload systemd user daemon
+  ansible.builtin.systemd:
+    daemon_reload: yes
+    scope: user
+
+- name: Enable and start MSSQL container service
+  ansible.builtin.systemd:
+    name: mssql
+    enabled: yes
+    state: started
+    scope: user

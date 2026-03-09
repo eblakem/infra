@@ -12,7 +12,12 @@
       - kitty
       - cliphist
       - wl-clipboard
-      - nnn
+      - thunar
+      - thunar-volman
+      - thunar-archive-plugin
+      - thunar-media-tags-plugin
+      - gvfs
+      - gvfs-mtp
       - pipewire
       - wireplumber
       - pipewire-audio
