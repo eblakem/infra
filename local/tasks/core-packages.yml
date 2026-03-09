@@ -74,4 +74,8 @@
       - podman
       - podman-docker
       - podman-compose
+      - jdk-openjdk
+      - dbeaver
+      - steam
+      - steamlink
     state: present
