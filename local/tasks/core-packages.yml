@@ -71,4 +71,7 @@
       - fastfetch
       - imagemagick
       - cmatrix
+      - podman
+      - podman-docker
+      - podman-compose
     state: present
