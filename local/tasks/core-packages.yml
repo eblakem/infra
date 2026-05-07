@@ -1,14 +1,14 @@
 ---
-- name: Install core packages  
+- name: Install core packages
   become: yes
   become_user: aur_builder
   aur:
-    name: 
-      - base-devel 
+    name:
+      - base-devel
       - git
       - openssh
       - ufw
-      - fish 
+      - fish
       - kitty
       - cliphist
       - wl-clipboard
@@ -16,21 +16,13 @@
       - thunar-volman
       - thunar-archive-plugin
       - thunar-media-tags-plugin
-      - gvfs
-      - gvfs-mtp
       - pipewire
       - wireplumber
-      - pipewire-audio
-      - pipewire-alsa
-      - pipewire-pulse
-      - qutebrowser
       - chromium
       - neovim
       - tmux
       - ripgrep
-      - lazygit
       - luarocks
-      - tgpt
       - brightnessctl
       - playerctl
       - downgrade
@@ -40,7 +32,6 @@
       - usbutils
       - less
       - stow
-      - timeshift
       - ufw
       - xorg-xhost
       - xorg-xprop
@@ -49,8 +40,6 @@
       - ghostscript
       - acpid
       - perl-file-mimeinfo
-      - bluetui
-      - impala
       - xf86-input-synaptics
       - unzip
       - pavucontrol
@@ -76,6 +65,4 @@
       - podman-compose
       - jdk-openjdk
       - dbeaver
-      - steam
-      - steamlink
     state: present

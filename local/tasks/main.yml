@@ -26,7 +26,7 @@
 # Install core packages
 - import_tasks: tasks/core-packages.yml
 
-# Install window manager 
+# Install window manager
 - import_tasks: tasks/user-interface-packages.yml
 
 # Install greeter
@@ -44,10 +44,7 @@
 - import_tasks: tasks/podman-quadlet.yml
 
 
-# Setup ghcup
-- import_tasks: tasks/ghcup.yml
-
-# Setup mise 
+# Setup mise
 - import_tasks: tasks/mise.yml
 
 # Setup firewall
