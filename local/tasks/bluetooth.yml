@@ -1,10 +1,10 @@
 ---
-- name: Install bluetooth 
+- name: Install bluetooth
   aur:
     name:
       - bluez
       - bluez-utils
-      - bluetui
+      - blueman
     state: present
   become: yes
   become_user: aur_builder

@@ -1,21 +1,35 @@
 ---
-- name: Install work packages  
+- name: Install work packages
   become: yes
   become_user: aur_builder
   aur:
-    name: 
+    name:
       - dkms
       - linux-headers
       - evdi-dkms
       - displaylink
       - icaclient
-      - dotnet-sdk-10.0
+      - libcamera
+      - libcamera-tools
+      - pipewire-libcamera
+      - wireplumber
     state: present
+
+- name: Create 99-libcamera.conf file
+  ansible.builtin.copy:
+    dest: ~/.config/wireplumber/wireplumber.conf.d/99-libcamera.conf
+    content: |
+      wireplumber.profiles = {
+        main = {
+          monitor.libcamera = "required"
+        }
+      }
+  become: yes
 
 - name: Create 20-evdi.conf file
   ansible.builtin.copy:
-    dest: /etc/X11/xorg.conf.d/20-evdi.conf 
-    content: | 
+    dest: /etc/X11/xorg.conf.d/20-evdi.conf
+    content: |
       Section "OutputClass"
               Identifier "DisplayLink"
               MatchDriver "evdi"
