@@ -10,6 +10,7 @@
       - ufw
       - fish
       - kitty
+      - foot
       - cliphist
       - wl-clipboard
       - thunar
@@ -32,7 +33,6 @@
       - usbutils
       - less
       - stow
-      - ufw
       - xorg-xhost
       - xorg-xprop
       - cups
@@ -65,4 +65,14 @@
       - podman-compose
       - jdk-openjdk
       - dbeaver
+      - netbird
+      - sbctl
+      - zram-generator
+      - wlsunset
     state: present
+
+- name: Enable netbird service
+  ansible.builtin.service:
+    name: netbird
+    enabled: true
+  become: yes

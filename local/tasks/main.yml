@@ -53,5 +53,12 @@
 # Set default apps
 - import_tasks: tasks/default-apps.yml
 
-# Install power control
-- import_tasks: tasks/tlp.yml
+# Manage power control
+- name: Ensure power-profiles-daemon is enabled and running
+  ansible.builtin.service:
+    name: power-profiles-daemon
+    enabled: true
+    state: started
+  become: yes
+
+# - import_tasks: tasks/tlp.yml

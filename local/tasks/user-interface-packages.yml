@@ -13,12 +13,10 @@
       - xdg-desktop-portal-gtk
       - xdg-desktop-portal-gnome
       - gnome-keyring
-      - fish
-      - kitty
       - swaybg
       - swayidle
       - swaylock
       - xwayland-satellite
-      - polkit-kde-agent
+      - polkit-gnome
       - adapta-gtk-theme
     state: present
