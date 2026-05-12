@@ -1,22 +1,26 @@
 --- 
-- name: Check if mise exists
-  command: which mise
-  register: mise_check
-  ignore_errors: true
+- name: Install mise 
+  become: yes
+  become_user: aur_builder
+  aur:
+    name:
+      - mise
+    state: present
 
-- name: Install mise
-  when: mise_check.rc == 1
-  block:
-    - name: Install mise 
-      become: yes
-      become_user: aur_builder
-      aur:
-        name:
-          - mise
+- name: Create fish completions directory
+  ansible.builtin.file:
+    path: ~/.config/fish/completions
+    state: directory
+    mode: '0755'
 
-    - name: Source mise 
-      shell: echo '/usr/bin/mise activate fish | source' >> ~/.config/fish/config.fishsource 
+- name: Source mise in fish config
+  ansible.builtin.lineinfile:
+    path: ~/.config/fish/config.fish
+    line: '/usr/bin/mise activate fish | source'
+    create: yes
+    state: present
 
-    - name: Install mise auto-completion 
-      command: mise completion fish > ~/.config/fish/completions/mise.fish
-  
+- name: Install mise auto-completion 
+  ansible.builtin.shell: 
+    cmd: mise completion fish > ~/.config/fish/completions/mise.fish
+    creates: ~/.config/fish/completions/mise.fish

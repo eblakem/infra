@@ -1,23 +1,32 @@
 ---
 - name: Firewall enable
+  community.general.ufw:
+    state: enabled
   become: yes
-  command: ufw enable
 
-- name: Firewall disable incoming connections
+- name: Firewall default deny incoming
+  community.general.ufw:
+    default: deny
+    direction: incoming
   become: yes
-  command: ufw default deny incoming
 
-- name: Firewall enable cups
+- name: Firewall allow cups
+  community.general.ufw:
+    rule: allow
+    port: '631'
+    proto: tcp
   become: yes
-  command: ufw allow 631/tcp
 
 - name: Firewall allow Forgejo UI and Registry
+  community.general.ufw:
+    rule: allow
+    port: '3000'
+    proto: tcp
   become: yes
-  command: ufw allow 3000/tcp
 
 - name: Firewall allow Forgejo SSH
+  community.general.ufw:
+    rule: allow
+    port: '2222'
+    proto: tcp
   become: yes
-  command: ufw allow 2222/tcp
-
-
-
