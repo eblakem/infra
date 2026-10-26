@@ -1,0 +1,27 @@
+---
+# ~/dotfiles/etc mirrors /etc: greetd (tuigreet -> niri-session),
+# NetworkManager (iwd backend), X11 (DisplayLink)
+- name: Copy system config from dotfiles
+  ansible.builtin.copy:
+    src: "{{ ansible_env.HOME }}/dotfiles/etc/"
+    dest: /etc/
+    owner: root
+    group: root
+    mode: u=rwX,go=rX
+  become: yes
+
+- name: Use systemd-resolved for DNS
+  ansible.builtin.file:
+    src: /run/systemd/resolve/stub-resolv.conf
+    dest: /etc/resolv.conf
+    state: link
+    force: yes
+  become: yes
+
+- name: Configure zram swap
+  ansible.builtin.copy:
+    dest: /etc/systemd/zram-generator.conf
+    content: |
+      [zram0]
+      compression-algorithm = zstd
+  become: yes

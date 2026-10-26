@@ -1,0 +1,17 @@
+---
+- name: Install packages
+  community.general.pacman:
+    name: >-
+      {{ packages_base + packages_network + packages_audio + packages_bluetooth
+         + packages_printing + packages_desktop + packages_files + packages_apps
+         + packages_dev }}
+    state: present
+  become: yes
+
+- name: Install work packages
+  community.general.pacman:
+    name: "{{ packages_work }}"
+    state: present
+  become: yes
+  tags:
+    - work

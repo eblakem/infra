@@ -1,0 +1,15 @@
+---
+# Web apps Chromium installs by itself on first launch (WebAppInstallForceList
+# policy). They appear in the app launcher like normal apps. Policy-installed
+# apps can't be removed from inside Chromium - delete them from this list.
+pwas:
+  - name: Outlook
+    url: https://outlook.office.com/mail/
+  - name: Microsoft Teams
+    url: https://teams.microsoft.com/v2/
+  - name: draw.io
+    url: https://app.diagrams.net/
+  - name: GitHub
+    url: https://github.com/
+  - name: Spotify
+    url: https://open.spotify.com/

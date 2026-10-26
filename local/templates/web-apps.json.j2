@@ -1,0 +1,7 @@
+{
+  "WebAppInstallForceList": [
+{% for app in pwas %}
+    { "url": "{{ app.url }}", "default_launch_container": "window" }{{ "," if not loop.last }}
+{% endfor %}
+  ]
+}

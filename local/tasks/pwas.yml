@@ -1,0 +1,13 @@
+---
+- name: Ensure Chromium managed policy directory exists
+  ansible.builtin.file:
+    path: /etc/chromium/policies/managed
+    state: directory
+  become: yes
+
+# Chromium installs these on next launch; they show up in the app launcher
+- name: Force-install web apps
+  ansible.builtin.template:
+    src: templates/web-apps.json.j2
+    dest: /etc/chromium/policies/managed/web-apps.json
+  become: yes

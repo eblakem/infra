@@ -1,0 +1,48 @@
+---
+- name: Enable pacman colour and parallel downloads
+  ansible.builtin.lineinfile:
+    path: /etc/pacman.conf
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+  loop:
+    - { regexp: '^#?Color', line: 'Color' }
+    - { regexp: '^#?ParallelDownloads', line: 'ParallelDownloads = 5' }
+  become: yes
+
+# https://aur.chaotic.cx - prebuilt AUR packages, installed with plain pacman
+- name: Check if Chaotic-AUR is set up
+  ansible.builtin.stat:
+    path: /etc/pacman.d/chaotic-mirrorlist
+  register: chaotic_check
+
+- name: Trust the Chaotic-AUR signing key
+  when: not chaotic_check.stat.exists
+  ansible.builtin.shell: |
+    pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+    pacman-key --lsign-key 3056513887B78AEB
+  become: yes
+
+- name: Install Chaotic-AUR keyring and mirrorlist
+  when: not chaotic_check.stat.exists
+  community.general.pacman:
+    name:
+      - https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst
+      - https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst
+    state: present
+  become: yes
+
+- name: Add Chaotic-AUR repo to pacman.conf
+  ansible.builtin.blockinfile:
+    path: /etc/pacman.conf
+    marker: "# {mark} chaotic-aur (managed by infra)"
+    block: |
+      [chaotic-aur]
+      Include = /etc/pacman.d/chaotic-mirrorlist
+  when: not chaotic_check.stat.exists
+  become: yes
+
+- name: Upgrade system
+  community.general.pacman:
+    update_cache: true
+    upgrade: true
+  become: yes

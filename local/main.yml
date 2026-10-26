@@ -1,4 +1,15 @@
 ---
 - hosts: all
+  vars_files:
+    - vars/packages.yml
+    - vars/pwas.yml
   tasks:
     - import_tasks: tasks/main.yml
+  handlers:
+    - name: Rebuild boot images
+      ansible.builtin.command: mkinitcpio -P
+      become: yes
+
+    - name: Reload udev rules
+      ansible.builtin.command: udevadm control --reload-rules
+      become: yes

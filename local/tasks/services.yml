@@ -1,0 +1,34 @@
+---
+- name: Enable system services
+  ansible.builtin.systemd_service:
+    name: "{{ item }}"
+    enabled: true
+  loop:
+    - NetworkManager.service
+    - iwd.service
+    - systemd-resolved.service
+    - systemd-timesyncd.service
+    - bluetooth.service
+    - cups.socket
+    - avahi-daemon.service
+    - greetd.service
+    - ufw.service
+    - tlp.service
+    - tlp-pd.service
+    - proton.VPN.service
+    - fstrim.timer
+  become: yes
+
+# Units come from packages or ~/.config/systemd/user (dotfiles)
+- name: Enable user services
+  ansible.builtin.systemd_service:
+    name: "{{ item }}"
+    enabled: true
+    scope: user
+    daemon_reload: true
+  loop:
+    - dms.service
+    - dms-jiggler.service
+    - audio-defaults.service
+    - ydotool.service
+    - podman.socket

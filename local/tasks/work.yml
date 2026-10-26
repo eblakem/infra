@@ -1,0 +1,8 @@
+---
+# Packages are in vars/packages.yml (packages_work); the DisplayLink X11
+# config comes from dotfiles/etc. Camera config is in dotfiles (wireplumber).
+- name: Enable the DisplayLink service
+  ansible.builtin.systemd_service:
+    name: displaylink.service
+    enabled: true
+  become: yes

@@ -1,0 +1,12 @@
+---
+# Silent boot. mkinitcpio merges /etc/kernel/cmdline and /etc/cmdline.d/*.conf
+# into the unified kernel image, so this sits beside whatever archinstall wrote.
+# Skipped if the running kernel is already quiet (e.g. set in another file).
+- name: Add quiet boot kernel options
+  ansible.builtin.copy:
+    dest: /etc/cmdline.d/quiet.conf
+    content: |
+      quiet loglevel=3 rd.systemd.show_status=false rd.udev.log_level=3 vt.global_cursor_default=0
+  when: "'quiet' not in ansible_proc_cmdline"
+  become: yes
+  notify: Rebuild boot images

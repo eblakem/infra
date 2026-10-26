@@ -1,25 +1,31 @@
---- 
-- name: Ensure dotfile dependencies
-  pacman:
-    name: 
-      - git
-      - stow
-    state: present
-
+---
 - name: Check if dotfiles repo exists
-  ansible.builtin.stat: 
-    path: "~/dotfiles/.git"
+  ansible.builtin.stat:
+    path: ~/dotfiles/.git
   register: dotfiles_repo_status
 
-- name: Install or update dotfiles
+- name: Clone dotfiles
   when: not dotfiles_repo_status.stat.exists
-  git:
-    repo: 'https://github.com/eblakem/dotfiles.git'
+  ansible.builtin.git:
+    # Private repo: bootstrap.sh runs `gh auth login` + `gh auth setup-git` first
+    repo: https://github.com/eblakem/dotfiles.git
     dest: ~/dotfiles
-    clone: yes 
-    update: yes
 
-- name: Stow adopt 
-  ansible.builtin.command: ./stow-adopt.sh 
+# Real directories, so stow links each app's folder individually instead of
+# folding all of ~/.config into the repo (which drags browser profiles,
+# caches etc. into ~/dotfiles).
+- name: Create base config directories
+  ansible.builtin.file:
+    path: "{{ item }}"
+    state: directory
+  loop:
+    - ~/.config
+    - ~/.local/bin
+    - ~/.local/share/applications
+
+- name: Stow dotfiles
+  ansible.builtin.command: ./stow-adopt.sh
   args:
     chdir: ~/dotfiles
+  register: stow_result
+  changed_when: stow_result.stdout != ""

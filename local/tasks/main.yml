@@ -1,48 +1,30 @@
 ---
-# Update/Upgrade system
-- import_tasks: tasks/upgrade.yml
+# Pacman config, Chaotic-AUR repo, system upgrade
+- import_tasks: tasks/pacman.yml
 
-# Install essential packages
-- import_tasks: tasks/essential-packages.yml
+# Install packages
+- import_tasks: tasks/packages.yml
 
-# Setup aur builder user
-- import_tasks: tasks/aur-builder.yml
+# User groups and uinput (ydotool)
+- import_tasks: tasks/user.yml
 
-# Create profile
-- import_tasks: tasks/profile.yml
-
-# Update profile
-- import_tasks: tasks/update-profile.yml
-
-# Install yay
-- import_tasks: tasks/yay.yml
-
-# Clone dotfiles
+# Clone and stow dotfiles
 - import_tasks: tasks/dotfiles.yml
 
-# Configure portals
-- import_tasks: tasks/portals-config.yml
+# Copy system config (greetd, NetworkManager, X11) from dotfiles/etc
+- import_tasks: tasks/system-config.yml
 
-# Install core packages
-- import_tasks: tasks/core-packages.yml
+# Quiet boot
+- import_tasks: tasks/boot.yml
 
-# Install window manager
-- import_tasks: tasks/user-interface-packages.yml
+# Chromium web apps (Outlook, Teams, ...)
+- import_tasks: tasks/pwas.yml
 
-# Install greeter
-- import_tasks: tasks/greeter.yml
+# Enable system and user services
+- import_tasks: tasks/services.yml
 
-# Install bluetooth
-- import_tasks: tasks/bluetooth.yml
-
-# Install work packages
-- import_tasks: tasks/work-packages.yml
-  tags:
-    - work
-
-# Setup MSSQL Quadlet
+# Setup Podman Quadlet
 - import_tasks: tasks/podman-quadlet.yml
-
 
 # Setup mise
 - import_tasks: tasks/mise.yml
@@ -50,15 +32,7 @@
 # Setup firewall
 - import_tasks: tasks/firewall.yml
 
-# Set default apps
-- import_tasks: tasks/default-apps.yml
-
-# Manage power control
-- name: Ensure power-profiles-daemon is enabled and running
-  ansible.builtin.service:
-    name: power-profiles-daemon
-    enabled: true
-    state: started
-  become: yes
-
-# - import_tasks: tasks/tlp.yml
+# DisplayLink, camera
+- import_tasks: tasks/work.yml
+  tags:
+    - work

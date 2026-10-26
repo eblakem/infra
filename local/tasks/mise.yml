@@ -1,12 +1,5 @@
---- 
-- name: Install mise 
-  become: yes
-  become_user: aur_builder
-  aur:
-    name:
-      - mise
-    state: present
-
+---
+# mise itself is installed from vars/packages.yml
 - name: Create fish completions directory
   ansible.builtin.file:
     path: ~/.config/fish/completions

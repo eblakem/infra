@@ -1,0 +1,26 @@
+---
+# ydotool (used by DMS) needs access to /dev/uinput
+- name: Create uinput group
+  ansible.builtin.group:
+    name: uinput
+    state: present
+  become: yes
+
+- name: Give the uinput group access to /dev/uinput
+  ansible.builtin.copy:
+    dest: /etc/udev/rules.d/80-uinput.rules
+    content: |
+      KERNEL=="uinput", GROUP="uinput", MODE="0660", OPTIONS+="static_node=uinput"
+  become: yes
+  notify: Reload udev rules
+
+- name: Add user to groups
+  ansible.builtin.user:
+    name: "{{ ansible_user_id }}"
+    groups:
+      - wheel
+      - video
+      - lp
+      - uinput
+    append: yes
+  become: yes

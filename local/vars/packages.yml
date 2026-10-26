@@ -1,0 +1,157 @@
+---
+# Everything here installs with plain pacman - official repos plus Chaotic-AUR
+# (prebuilt AUR packages). The few packages that only exist as AUR source live
+# in ../aur-packages.txt and are built by bootstrap.sh with yay, as you.
+#
+# Run scripts/drift.sh to compare this list against what's installed.
+
+packages_base:
+  - base
+  - base-devel
+  - linux
+  - linux-headers
+  - linux-lts
+  - linux-lts-headers
+  - linux-firmware
+  - intel-ucode
+  - sof-firmware
+  - efibootmgr
+  - sbctl
+  - tpm2-tools
+  - zram-generator
+  - sudo
+  - nano
+  - less
+  - git
+  - stow
+  - openssh
+  - rsync
+  - wget
+  - unzip
+  - acpid
+  - tlp
+  - tlp-pd
+
+packages_network:
+  - networkmanager
+  - network-manager-applet
+  - nm-connection-editor
+  - iwd
+  - ufw
+  - proton-vpn-gtk-app
+
+packages_audio:
+  - pipewire
+  - pipewire-alsa
+  - pipewire-jack
+  - pipewire-pulse
+  - wireplumber
+  - libpulse
+  - pamixer
+  - pavucontrol
+
+packages_bluetooth:
+  - bluez
+  - bluez-utils
+  - blueman
+
+packages_printing:
+  - cups
+  - cups-pk-helper
+  - system-config-printer
+  - ghostscript
+  - avahi
+
+packages_desktop:
+  - niri
+  - xwayland-satellite
+  - dms-shell
+  - quickshell
+  - matugen
+  - cava
+  - awww
+  - dux-gop
+  - greetd
+  - greetd-tuigreet
+  - gnome-keyring
+  - xdg-desktop-portal-gtk
+  - xdg-desktop-portal-gnome
+  - nwg-look
+  - adapta-gtk-theme
+  - kitty
+  - wl-clipboard
+  - brightnessctl
+  - udiskie
+  - ydotool
+  - xorg-xhost
+  - xf86-input-synaptics
+  - kimageformats
+  - noto-fonts
+  - noto-fonts-emoji
+  - ttf-jetbrains-mono-nerd
+
+packages_files:
+  - thunar
+  - thunar-archive-plugin
+  - thunar-media-tags-plugin
+  - thunar-volman
+  - exfatprogs
+  - inotify-tools
+  - perl-file-mimeinfo
+
+packages_apps:
+  - chromium
+  - bitwarden
+  - libreoffice-fresh
+  - gimp
+  - vlc
+  - vlc-plugin-chromecast
+  - vlc-plugin-ffmpeg
+  - mpv
+  - qbittorrent
+  - zathura
+  - zathura-pdf-mupdf
+  - sxiv
+  - imagemagick
+  - catt
+  - yt-dlp
+  - fastfetch
+  - cmatrix
+
+packages_dev:
+  - fish
+  - tmux
+  - neovim
+  - ripgrep
+  - fzf
+  - jq
+  - ncdu
+  - socat
+  - luarocks
+  - github-cli
+  - gitleaks
+  - mise
+  - mkcert
+  - sops
+  - age
+  - opentofu
+  - rclone
+  - pandoc-cli
+  - podman
+  - podman-compose
+  - podman-docker
+  - dbeaver
+  - webkit2gtk-4.1
+  - downgrade
+  - yay
+
+# DisplayLink dock + the laptop's MIPI camera (libcamera). Tagged `work`.
+packages_work:
+  - dkms
+  - displaylink
+  - libcamera
+  - libcamera-ipa
+  - libcamera-tools
+  - pipewire-libcamera
+  - gst-plugin-libcamera
+  - gst-plugin-pipewire

@@ -1,0 +1,4 @@
+# AUR-only packages (not in the official repos or Chaotic-AUR).
+# bootstrap.sh builds these with yay as your normal user. Work machine only.
+icaclient
+v4l2-relayd
