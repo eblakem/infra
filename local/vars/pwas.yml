@@ -2,14 +2,21 @@
 # Web apps Chromium installs by itself on first launch (WebAppInstallForceList
 # policy). They appear in the app launcher like normal apps. Policy-installed
 # apps can't be removed from inside Chromium - delete them from this list.
+#
+# Each url is the app's *manifest id*, not just any page on the site. Chromium
+# names an app after its manifest id, so these match the apps already installed
+# by hand (Chromium adopts them instead of adding a second copy). That holds
+# even before you sign in, when Chromium can't read Teams/Outlook's manifest
+# and installs a placeholder named after this url. The id comment is
+# the Chromium app id the url produces.
 pwas:
   - name: Outlook
-    url: https://outlook.office.com/mail/
+    url: https://outlook.office.com/mail/                     # faolnafnngnfdaknnbpnkhgohbobgegn
   - name: Microsoft Teams
-    url: https://teams.microsoft.com/v2/
+    url: https://teams.microsoft.com/?clientType=pwa          # cifhbcnohmdccbgoicgdjpfamggdegmo
   - name: draw.io
-    url: https://app.diagrams.net/
+    url: https://app.diagrams.net/index.html                  # ilmgmogedobmcfegdjcibiiaodmdenpf
   - name: GitHub
-    url: https://github.com/
+    url: https://github.com/                                  # mjoklplbddabcmpepnokjaffbmgbkkgg
   - name: Spotify
-    url: https://open.spotify.com/
+    url: https://open.spotify.com/?utm_source=pwa_install     # pjibgclleladliembfgfagdaldikeohf

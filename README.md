@@ -81,7 +81,7 @@ These steps involve secrets or interactive logins, so they aren't automated:
 - [ ] **age key for sops** - restore `~/.config/sops/age/keys.txt`.
 - [ ] **Podman container secrets** - restore the `*.env` files in
       `~/.config/containers/systemd/`.
-- [ ] **Chromium** - open it. Outlook, Teams, OneDrive etc. install themselves
+- [ ] **Chromium** - open it. Outlook, Teams, draw.io, GitHub and Spotify install themselves
       within a minute or so. Sign in to each.
 - [ ] **mise** - `mise install` to pull node and the other tools.
 - [ ] **Unlock the disk with the TPM** (optional, no passphrase at boot):
