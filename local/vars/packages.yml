@@ -121,6 +121,7 @@ packages_apps:
   - catt
   - yt-dlp
   - ytfzf
+  - ueberzugpp
   - fastfetch
   - cmatrix
 
