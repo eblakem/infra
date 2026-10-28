@@ -120,6 +120,7 @@ packages_apps:
   - imagemagick
   - catt
   - yt-dlp
+  - ytfzf
   - fastfetch
   - cmatrix
 
