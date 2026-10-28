@@ -1,6 +1,6 @@
 # infra
 
-Rebuilds my laptop from a fresh Arch install: packages, niri + DankMaterialShell,
+Rebuilds my laptop from a fresh Arch install: packages, niri + DankMaterialShell (dux-shell),
 dotfiles, Outlook/Teams web apps, services, firewall, quiet boot.
 
 - `bootstrap.sh` - the one thing you run

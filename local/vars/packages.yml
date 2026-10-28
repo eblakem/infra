@@ -65,10 +65,14 @@ packages_printing:
 packages_desktop:
   - niri
   - xwayland-satellite
-  - dms-shell
+  - dux-shell
   - quickshell
   - matugen
   - cava
+  - qt6-multimedia
+  - qt6-multimedia-ffmpeg
+  - qt6ct
+  - wtype
   - awww
   - dux-gop
   - greetd
