@@ -108,6 +108,11 @@ packages_apps:
   - vlc-plugin-chromecast
   - vlc-plugin-ffmpeg
   - mpv
+  # reolink-viewer (dotfiles ~/.local/bin)
+  - ffmpeg
+  - python-gobject
+  - gtk4
+  - libnotify
   - qbittorrent
   - zathura
   - zathura-pdf-mupdf

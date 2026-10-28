@@ -29,6 +29,9 @@
 # Setup mise
 - import_tasks: tasks/mise.yml
 
+# Reolink camera viewer venv
+- import_tasks: tasks/reolink.yml
+
 # Setup firewall
 - import_tasks: tasks/firewall.yml
 

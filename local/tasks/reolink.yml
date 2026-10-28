@@ -1,0 +1,13 @@
+---
+# Python venv for ~/.local/bin/reolink-viewer (from dotfiles). It needs the
+# system's PyGObject/GTK4, so the venv sees system site-packages.
+# Credentials (~/.config/reolink-cred) are restored by hand - see README.
+- name: Create Reolink viewer venv
+  ansible.builtin.command:
+    cmd: python -m venv --system-site-packages ~/.local/share/reolink-viewer/venv
+    creates: ~/.local/share/reolink-viewer/venv/bin/python
+
+- name: Install reolink_aio into the venv
+  ansible.builtin.pip:
+    name: reolink_aio
+    virtualenv: ~/.local/share/reolink-viewer/venv
