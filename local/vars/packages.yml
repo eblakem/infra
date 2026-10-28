@@ -108,6 +108,7 @@ packages_apps:
   - vlc-plugin-chromecast
   - vlc-plugin-ffmpeg
   - mpv
+  - mpv-mpris
   # reolink-viewer (dotfiles ~/.local/bin)
   - ffmpeg
   - python-gobject
